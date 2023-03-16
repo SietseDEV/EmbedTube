@@ -1,4 +1,4 @@
-const API_KEY = 'your_api_key_here';
+const API_KEY = 'AIzaSyATnaMLe2oAsrc_ctnzA2CLUZijotYcojg';
 const API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const MAX_RESULTS = 20;
 
