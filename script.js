@@ -18,7 +18,7 @@ function searchVideos() {
         const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
         const channelTitle = item.snippet.channelTitle;
         const channelId = item.snippet.channelId;
-        const channelImageUrl = item.snippet.thumbnails.default.url;
+        const channelImageUrl = item.snippet.channelThumbnails.default.url;
 
         // Get video views count or show "Live now" or "Upcoming"
         const liveBroadcastContent = item.snippet.liveBroadcastContent;
@@ -30,7 +30,7 @@ function searchVideos() {
         } else if (liveBroadcastContent === "upcoming") {
           views = "Upcoming";
         } else {
-          const viewCount = parseInt(item.statistics?.viewCount) || 0;
+          const viewCount = item.statistics?.viewCount || 0;
           const viewsPerDay = viewCount / daysSincePublished;
           views = `${Math.round(viewsPerDay * 365)} views`;
         }
