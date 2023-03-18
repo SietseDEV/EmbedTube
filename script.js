@@ -19,7 +19,21 @@ function searchVideos() {
         const channelTitle = item.snippet.channelTitle;
         const channelId = item.snippet.channelId;
         const channelImageUrl = item.snippet.thumbnails.default.url;
-        const views = item.statistics?.viewCount || 'N/A';
+
+        // Get video views count or show "Live now" or "Upcoming"
+        const liveBroadcastContent = item.snippet.liveBroadcastContent;
+        const publishedAt = new Date(item.snippet.publishedAt);
+        const daysSincePublished = Math.round((new Date() - publishedAt) / (1000 * 60 * 60 * 24));
+        let views;
+        if (liveBroadcastContent === "live") {
+          views = "Live now";
+        } else if (liveBroadcastContent === "upcoming") {
+          views = "Upcoming";
+        } else {
+          const viewCount = parseInt(item.statistics?.viewCount) || 0;
+          const viewsPerDay = viewCount / daysSincePublished;
+          views = `${Math.round(viewsPerDay * 365)} views`;
+        }
 
         const videoCard = `
           <div class="video-card">
@@ -31,7 +45,7 @@ function searchVideos() {
               <img src="${channelImageUrl}" alt="${channelTitle} profile picture">
               <div>
                 <p>${channelTitle}</p>
-                <p>${views} views</p>
+                <p>${views}</p>
               </div>
             </div>
           </div>
