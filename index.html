@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>EmbedTube</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EmbedTube</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
       <h1>EmbedTube</h1>
-      <div id="searchBar">
-        <input type="text" id="searchInput" placeholder="Search videos...">
-        <button onclick="searchVideos()">Search</button>
-      </div>
-    </header>
-    <main>
-      <div id="videoContainer"></div>
-    </main>
-    <footer>
+      <form id="search-form">
+        <input type="text" placeholder="Search for videos...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+  <main>
+    <div id="video-container" class="container">
+      <div id="video-list"></div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
       <p>&copy; EmbedTube 2023</p>
-    </footer>
-  </body>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
